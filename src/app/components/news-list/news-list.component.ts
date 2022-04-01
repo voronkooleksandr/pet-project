@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/service/http.service';
+import { News } from 'src/app/models/news';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-news-list',
@@ -7,42 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsListComponent implements OnInit {
 
-  newsList: Array<any> = [{
-    "name": "string",
-"username": "string",
-"email": "string",
-"role": "string",
-"address": "string",
-"phone": "string"
-},
-{"name": "string",
-"username": "string",
-"email": "string",
-"role": "string",
-"address": "string",
-"phone": "string"
-},
-{"name": "string",
-"username": "string",
-"email": "string",
-"role": "string",
-"address": "string",
-"phone": "string"
-},
-{"name": "string",
-"username": "string",
-"email": "string",
-"role": "string",
-"address": "string",
-"phone": "string"
-},
+  newsList: Array<News> = [];
 
-
-]
-
-  constructor() { }
+  constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit(): void {
+    this.httpService.getNews().subscribe(
+      data => {
+        this.newsList = data;
+        console.log(this.newsList)
+      }, error => {
+        console.log(error)
+      }
+    )
   }
+
 
 }

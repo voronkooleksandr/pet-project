@@ -1,0 +1,10 @@
+
+
+<div *ngIf="newsDetail"  class="card" style="width: 18rem;">
+  <img src="{{newsDetail.urlToImage}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{newsDetail.description}}</h5>
+    <p class="card-text">{{newsDetail.author}}</p>
+    <a href="{{newsDetail.url}}" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
