@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class NewsListComponent implements OnInit {
 
   newsList: Array<News> = [];
+  searchItem: string = "";
+
 
   constructor(private httpService: HttpService, private router: Router) { }
 
@@ -24,7 +26,23 @@ export class NewsListComponent implements OnInit {
       }, error => {
         console.log(error)
       }
-    )
+    );
+
+    this.httpService.search.subscribe((value: string) => {
+      this.searchItem = value;
+    })
+  }
+
+  search(event: any ) {
+    this.searchItem = (event.target as HTMLInputElement).value;
+    console.log(this.searchItem);
+    this.httpService.search.next(this.searchItem);
+  }
+
+  clean (event: any) {
+    this.searchItem = (event.target as HTMLInputElement).value;
+    console.log(this.searchItem);
+    this.httpService.search.next(this.searchItem);
   }
 
 

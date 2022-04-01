@@ -11,6 +11,7 @@ export class HttpService {
 
   urlNews: string = "https://newsapi.org/v2/top-headlines?country=ua&apiKey=c27589af639e48b99d58747c11cd2445";
   newsList: News[] = [];
+  search: any;
 
   constructor(private http: HttpClient) { }
 
