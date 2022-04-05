@@ -5,7 +5,8 @@ import { NewsListComponent } from './components/news-list/news-list.component';
 
 const routes: Routes = [
   {path: "", component: NewsListComponent},
-  {path: ":features/:author", component: NewsDetailComponent }
+  {path: ":features/:author", component: NewsDetailComponent },
+  { path: 'apidata', loadChildren: () => import('./apidata/apidata.module').then(m => m.ApidataModule) }
   // {path: 'notfound', component: NotfoundComponent},
   // {path: '**', redirectTo: "technews" }
 ];
